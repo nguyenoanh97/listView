@@ -37,23 +37,38 @@ public class MonHocAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return 0;
     }
+    private class ViewHolder {
+        ImageView imgHinh;
+        TextView txtTen, txtMoTa;
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ViewHolder holder;
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        convertView = inflater.inflate(layout, null);
-        // ánh xạ view
-        TextView txtTen = (TextView) convertView.findViewById(R.id.textviewTen);
-        TextView txtMoTa = (TextView) convertView.findViewById(R.id.textviewMoTa);
-        ImageView imgHinh = (ImageView) convertView.findViewById(R.id.imageHinh);
+            convertView = inflater.inflate(layout, null);
+            holder = new ViewHolder();
+            // ánh xạ view
+            holder.txtTen = (TextView) convertView.findViewById(R.id.textviewTen);
+            holder.txtMoTa = (TextView) convertView.findViewById(R.id.textviewMoTa);
+            holder.imgHinh = (ImageView) convertView.findViewById(R.id.imageHinh);
+            convertView.setTag(holder);
+
+
+        }else{
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+
 
         // gán giá trị
         MonHoc monhoc = monHocList.get(position);
-        txtTen.setText(monhoc.getTen());
-        txtMoTa.setText(monhoc.getMoTa());
-        imgHinh.setImageResource(monhoc.getHinh());
+        holder.txtTen.setText(monhoc.getTen());
+        holder.txtMoTa.setText(monhoc.getMoTa());
+        holder.imgHinh.setImageResource(monhoc.getHinh());
 
 
         return convertView;

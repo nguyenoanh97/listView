@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         arrayMonHoc.add(new MonHoc("CSS", "CSS", R.drawable.css));
         arrayMonHoc.add(new MonHoc("HTML", "HTML", R.drawable.html));
         arrayMonHoc.add(new MonHoc("Java", "Lập trình Java", R.drawable.java));
+        arrayMonHoc.add(new MonHoc("Javascript", "javascript", R.drawable.js));
+
 
     }
 
